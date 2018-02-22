@@ -1,4 +1,4 @@
-  参考servlet-2.5规范,在web.xml文件中定义servlet的映射地址有如下规则
+  参考servlet-2.5规范,在web.xml文件中定义servlet的映射地址有如下定义规则
 原文
   • A string beginning with a ‘/’ character and ending with a ‘/*’ suffix is used
   for path mapping.
@@ -8,8 +8,25 @@
   path and the path info is null.
   • All other strings are used for exact matches only.  
  翻译
-    模糊匹配
-      路径以'/'字符开头和'/*'字符结尾
-      路径以'*.'字符为前缀
-      路径只有'/',通常是默认的servlet
-    除上面三条规则以外,其他字符均精确匹配
+    映射路径以'/'字符开头和'/*'字符结尾
+    映射路径以'*.'字符为前缀
+    映射路径只有'/',通常是当做处理所有默认的请求
+    映射路径所有其他的字符
+ 例子
+     映射路径          servlet类
+    /foo/bar/*        servlet1
+    /baz/*            servlet2
+    /catalog          servlet3
+    *.bop             servlet4
+    
+    请求路径              处理请求的servlet
+    /foo/bar/index.html     servlet1
+    /foo/bar/index.bop      servlet1
+    /baz                    servlet2
+    /baz/index.html         servlet2
+    /catalog                servlet3
+    /catalog/index.html     “default” servlet
+    /catalog/racecar.bop    servlet4
+    /index.bop              servlet4
+    
+    
