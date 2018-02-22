@@ -1,0 +1,15 @@
+  参考servlet-2.5规范,在web.xml文件中定义servlet的映射地址有如下规则
+原文
+  • A string beginning with a ‘/’ character and ending with a ‘/*’ suffix is used
+  for path mapping.
+  • A string beginning with a ‘*.’ prefix is used as an extension mapping.
+  • A string containing only the ’/’ character indicates the "default" servlet of
+  the application. In this case the servlet path is the request URI minus the context
+  path and the path info is null.
+  • All other strings are used for exact matches only.  
+ 翻译
+    模糊匹配
+      路径以'/'字符开头和'/*'字符结尾
+      路径以'*.'字符为前缀
+      路径只有'/',通常是默认的servlet
+    除上面三条规则以外,其他字符均精确匹配
